@@ -2,6 +2,9 @@ require("dotenv").config();
 
 const cors = require("cors");
 const express = require("express");
+const mongoose = require("mongoose");
+
+const quoteRoutes = require("./controllers/quoteController");
 
 const app = express();
 
@@ -12,17 +15,27 @@ app.use(
     credentials: true,
   })
 );
+
 app.use(express.json());
+
 // it tracks every request that comes in.
 app.use((req, res, next) => {
   console.log(req.method, req.path);
   next();
 });
 
-// Todo: create endpoints
+app.use("/api/quotes", quoteRoutes);
 
-// Todo: connect to mongo db
+// connect to db
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log("Connected to db");
 
-app.listen(process.env.PORT, () => {
-  console.log("Listening on port", process.env.PORT);
-});
+    app.listen(process.env.PORT, () => {
+      console.log("Listening on port", process.env.PORT);
+    });
+  })
+  .catch((error) => {
+    console.log(error);
+  });
