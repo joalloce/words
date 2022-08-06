@@ -37,20 +37,21 @@ const deleteQuote = async (req, res) => {
 const getQuote = async (req, res) => {
   const { id } = req.params;
 
+  //get a random quote
   if (id === "random") {
     const count = await Quote.count();
 
+    // get all quotes
     const random = Math.floor(Math.random() * count);
-    console.log("count", count);
-    console.log("random", random);
 
-    const quote = await Quote.find({}).skip(random);
+    const quote = await Quote.find({});
 
     if (!quote) {
       return res.status(404).json({ error: "No quotes" });
     }
 
-    res.status(200).json(quote[0]);
+    // get one random quote
+    res.status(200).json(quote[random]);
     return;
   }
   // check if id is valid for mongo
@@ -67,7 +68,7 @@ const getQuote = async (req, res) => {
   res.status(200).json(quote);
 };
 
-// Todo
+// get all quotes
 const getQuotes = async (req, res) => {
   const quotes = await Quote.find({}).sort({ createdAt: -1 });
 

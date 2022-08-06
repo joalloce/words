@@ -18,12 +18,6 @@ app.use(
 
 app.use(express.json());
 
-// it tracks every request that comes in.
-app.use((req, res, next) => {
-  console.log(req.method, req.path);
-  next();
-});
-
 app.use("/api/quotes", quoteRoutes);
 
 // connect to db
