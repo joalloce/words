@@ -1,21 +1,22 @@
 import { useEffect, useState } from "react";
 
+import { useQuotesContext } from "../hooks/useQuotesContext";
 import QuoteDetails from "../components/QuoteDetails";
 import QuoteForm from "../components/QuoteForm";
 
 const Home = () => {
-  const [quotes, setQuotes] = useState([]);
+  const { quotes, dispatch } = useQuotesContext();
   useEffect(() => {
     const fetchQuotes = async () => {
       const res = await fetch("http://localhost:4000/api/quotes");
       const json = await res.json();
 
       if (res.ok) {
-        setQuotes(json);
+        dispatch({ type: "SET_QUOTES", payload: json });
       }
     };
     fetchQuotes();
-  }, []);
+  }, [dispatch]);
   return (
     <div className="home">
       <div className="quotes">

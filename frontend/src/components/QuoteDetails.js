@@ -1,9 +1,15 @@
+import { useQuotesContext } from "../hooks/useQuotesContext";
+
 const QuoteDetails = ({ quote }) => {
+  const { dispatch } = useQuotesContext();
   const handleClick = async () => {
     const res = await fetch("http://localhost:4000/api/quotes/" + quote._id, {
       method: "DELETE",
     });
-    //update de ui
+    const json = await res.json();
+    if (res.ok) {
+      dispatch({ type: "DELETE_QUOTE", payload: json });
+    }
   };
   return (
     <div className="quote-details">
