@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps:wght@400;700&family=Open+Sans:wght@300;400;500;600;700&display=swap');
+
+body {
+  background: white;
+  margin: 0;
+  font-family: "Open Sans";
+}
+
+header {
+  background: white;
+}
+
+header a {
+  color: grey;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+header div {
+  color: grey;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+header .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.pages {
+  max-width: 1200px;
+  padding: 30;
+  margin: 0 auto;
+}
+
+.home {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 50px;
+}
+
+.home button {
+  background: #ddd;
+  border: 0;
+  padding: 10px;
+  cursor: pointer;
+  font-family: "Open Sans";
+}
+
+.quote-details {
+  background: #f1f1f1;
+  border-radius: 4px;
+  margin: 20px auto;
+  padding: 20px;
+  position: relative;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+}
+
+.quote-details h4 {
+  margin: 0 0 10px 0;
+  font-size: 1.2em;
+}
+
+.quote-details p {
+  margin: 0;
+  color: #555;
+}
+
+.quote-font {
+  font-size: 1.5em;
+  font-family: "Oleo Script Swash Caps";
+}
+
+.quote-details span {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  background: #f1f1f1;
+  padding: 6px;
+  border-radius: 50%;
+  color: #333;
+}
+
+label, input {
+  display: block;
+}
+
+input {
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  width: 100%;
+  border: 1.5 solid #eee;
+  box-sizing: border-box;
+}
+
+form button {
+  background: #ddd;
+  border: 0;
+  padding: 10px;
+  cursor: pointer;
+  font-family: "Open Sans";
+}
+
+input.error {
+  border: 1.5px solid red;
+}
+
+div.error {
+  padding: 10px;
+  color: red;
+}
+
+.popup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background: rgba(0,0,0, 0.7);
+  z-index: 20;
+}
+.popup-inner {
+  position: absolute;
+  left: 40%;
+  right: 40%;
+  top: 40%;
+  bottom: 40%;
+  margin: auto;
+  background: white;
+}
+
+.quote-details-popup {
+  margin: 20px;
+  font-size: 1em;
+}
+
+.quote-font-popup {
+  font-size: 1.5em;
+  font-family: "Oleo Script Swash Caps";
+}
