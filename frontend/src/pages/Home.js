@@ -14,6 +14,7 @@ const Home = () => {
       setShow(!show);
     }
   };
+
   useEffect(() => {
     const fetchQuotes = async () => {
       const res = await fetch("http://localhost:4000/api/quotes");
@@ -25,6 +26,7 @@ const Home = () => {
     };
     fetchQuotes();
   }, [dispatch]);
+
   return (
     <div className="home">
       {!show && <button onClick={handleShow}>See Quotes</button>}

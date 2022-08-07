@@ -7,5 +7,6 @@ export const useQuotesContext = () => {
   if (!context) {
     throw Error("error");
   }
+
   return context;
 };

@@ -1,9 +1,10 @@
-import { useQuotesContext } from "../hooks/useQuotesContext";
-
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
+
+import { useQuotesContext } from "../hooks/useQuotesContext";
 
 const QuoteDetails = ({ quote }) => {
   const { dispatch } = useQuotesContext();
+
   const handleClick = async () => {
     const res = await fetch("http://localhost:4000/api/quotes/" + quote._id, {
       method: "DELETE",
@@ -13,6 +14,7 @@ const QuoteDetails = ({ quote }) => {
       dispatch({ type: "DELETE_QUOTE", payload: json });
     }
   };
+
   return (
     <div className="quote-details">
       <p className="quote-font">

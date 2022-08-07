@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+
 import QuotePopup from "./QuotePopup";
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
   const [randomQuote, setRandomQuote] = useState(null);
+
   const handleClick = async () => {
     const res = await fetch("http://localhost:4000/api/quotes/random");
     if (!res.ok) {
@@ -17,6 +19,7 @@ const Navbar = () => {
       setShow(true);
     }
   };
+
   return (
     <header>
       {show && (
