@@ -1,6 +1,6 @@
 # Words
 
-It uses the folowing technologies:
+It uses the following technologies:
 
 - React
 - Node
