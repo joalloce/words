@@ -6,6 +6,14 @@ import QuoteForm from "../components/QuoteForm";
 
 const Home = () => {
   const { quotes, dispatch } = useQuotesContext();
+  const [show, setShow] = useState(false);
+
+  const handleShow = (e) => {
+    e.preventDefault();
+    if (quotes.length) {
+      setShow(!show);
+    }
+  };
   useEffect(() => {
     const fetchQuotes = async () => {
       const res = await fetch("http://localhost:4000/api/quotes");
@@ -19,8 +27,10 @@ const Home = () => {
   }, [dispatch]);
   return (
     <div className="home">
+      {!show && <button onClick={handleShow}>See Quotes</button>}
       <div className="quotes">
-        {quotes &&
+        {show &&
+          quotes &&
           quotes.map((quote) => <QuoteDetails key={quote._id} quote={quote} />)}
       </div>
       <QuoteForm />

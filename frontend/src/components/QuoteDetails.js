@@ -1,5 +1,7 @@
 import { useQuotesContext } from "../hooks/useQuotesContext";
 
+import formatDistanceToNow from "date-fns/formatDistanceToNow";
+
 const QuoteDetails = ({ quote }) => {
   const { dispatch } = useQuotesContext();
   const handleClick = async () => {
@@ -17,7 +19,9 @@ const QuoteDetails = ({ quote }) => {
         <strong>{quote.title}</strong>
       </p>
       <p>Author: {quote.author}</p>
-      <p>{quote.createdAt}</p>
+      <p>
+        {formatDistanceToNow(new Date(quote.createdAt), { addSuffix: true })}
+      </p>
       <span onClick={handleClick}>delete</span>
     </div>
   );

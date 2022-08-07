@@ -4,7 +4,9 @@ const Quote = require("../models/quoteModel");
 
 // create new quote
 const createQuote = async (req, res) => {
-  const { title, author } = req.body;
+  let { title, author } = req.body;
+
+  if (author === "") author = "Anonymous";
 
   // add doc to db
   try {
@@ -40,6 +42,9 @@ const getQuote = async (req, res) => {
   //get a random quote
   if (id === "random") {
     const count = await Quote.count();
+    if (!count) {
+      return res.status(404).json({ error: "No quotes" });
+    }
 
     // get all quotes
     const random = Math.floor(Math.random() * count);
